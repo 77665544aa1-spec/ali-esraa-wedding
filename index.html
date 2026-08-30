@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دعوة فرح علي وإسراء</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Tahoma", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #5c4525 0%, #21180d 45%, #080604 100%);
+      color: #fff;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* النجوم */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #ffd978;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ffd978;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: .2; transform: scale(.7); }
+      to   { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* الكارت */
+    .invitation {
+      width: min(92%, 440px);
+      min-height: 680px;
+      position: relative;
+      padding: 45px 25px;
+      text-align: center;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.12),
+          rgba(255,255,255,.03)
+        );
+
+      border: 1px solid rgba(255,215,120,.6);
+      border-radius: 30px;
+
+      box-shadow:
+        0 35px 80px rgba(0,0,0,.7),
+        inset 0 0 35px rgba(255,215,120,.08);
+
+      backdrop-filter: blur(12px);
+
+      transform-style: preserve-3d;
+      animation: cardFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%,100% {
+        transform: translateY(0) rotateX(0deg);
+      }
+      50% {
+        transform: translateY(-12px) rotateX(2deg);
+      }
+    }
+
+    .ornament {
+      color: #e7b957;
+      font-size: 34px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 15px #e7b957;
+    }
+
+    .small-title {
+      color: #e6c77b;
+      font-size: 15px;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 27px;
+      color: #fff2c9;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(255,210,100,.5);
+    }
+
+    .names {
+      margin: 25px 0;
+      font-size: 42px;
+      font-weight: bold;
+      color: #f5d27b;
+
+      text-shadow:
+        0 2px 0 #8a621d,
+        0 5px 15px rgba(0,0,0,.7);
+
+      transform: translateZ(40px);
+    }
+
+    .heart {
+      display: block;
+      font-size: 28px;
+      margin: 10px 0;
+      animation: heartbeat 1.2s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    .line {
+      width: 75%;
+      height: 1px;
+      margin: 25px auto;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #e8bf68,
+        transparent
+      );
+    }
+
+    .details {
+      margin-top: 25px;
+    }
+
+    .detail {
+      margin: 18px 0;
+      color: #eee;
+      font-size: 17px;
+    }
+
+    .detail span {
+      display: block;
+      color: #dcb762;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    /* العداد */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 25px 0;
+    }
+
+    .time-box {
+      width: 65px;
+      padding: 10px 5px;
+      border-radius: 12px;
+
+      background: rgba(255,215,120,.08);
+      border: 1px solid rgba(255,215,120,.3);
+
+      box-shadow:
+        inset 0 0 15px rgba(255,215,120,.05),
+        0 5px 15px rgba(0,0,0,.3);
+    }
+
+    .time-box strong {
+      display: block;
+      font-size: 23px;
+      color: #f7d37c;
+    }
+
+    .time-box small {
+      font-size: 10px;
+      color: #ddd;
+    }
+
+    /* زر الخريطة */
+    .map-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 13px 30px;
+      border-radius: 30px;
+
+      color: #1b1207;
+      background: linear-gradient(
+        135deg,
+        #ffe59a,
+        #c79732
+      );
+
+      text-decoration: none;
+      font-weight: bold;
+
+      box-shadow:
+        0 8px 25px rgba(214,169,65,.35);
+
+      transition: .3s;
+    }
+
+    .map-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(255,210,100,.5);
+    }
+
+    .footer {
+      margin-top: 25px;
+      color: #bfa66b;
+      font-size: 12px;
+    }
+
+    /* ورود */
+    .flower {
+      position: fixed;
+      font-size: 30px;
+      opacity: .5;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-100px) rotate(0deg);
+      }
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+    @media(max-width:400px) {
+      .invitation {
+        min-height: 650px;
+        padding: 35px 18px;
+      }
+
+      .names {
+        font-size: 35px;
+      }
+
+      .time-box {
+        width: 58px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="invitation">
+
+    <div class="ornament">❦</div>
+
+    <div class="small-title">
+      بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ
+    </div>
+
+    <h1>
+      دعوة لحضور حفل زفاف
+    </h1>
+
+    <div class="names">
+      علي
+      <span class="heart">♥</span>
+      إسراء
+    </div>
+
+    <div class="line"></div>
+
+    <p style="color:#ddd; line-height:2;">
+      بكل الحب والسعادة<br>
+      نتشرف بدعوتكم لمشاركتنا<br>
+      أجمل ليلة في حياتنا ❤️
+    </p>
+
+    <div class="details">
+
+      <div class="detail">
+        <span>📅 الموعد</span>
+        الجمعة 4 سبتمبر 2026
+      </div>
+
+      <div class="detail">
+        <span>📍 المكان</span>
+        المعادي
+      </div>
+
+    </div>
+
+    <div class="line"></div>
+
+    <div class="countdown">
+
+      <div class="time-box">
+        <strong id="days">00</strong>
+        <small>يوم</small>
+      </div>
+
+      <div class="time-box">
+        <strong id="hours">00</strong>
+        <small>ساعة</small>
+      </div>
+
+      <div class="time-box">
+        <strong id="minutes">00</strong>
+        <small>دقيقة</small>
+      </div>
+
+      <div class="time-box">
+        <strong id="seconds">00</strong>
+        <small>ثانية</small>
+      </div>
+
+    </div>
+
+    <a
+      class="map-btn"
+      href="https://www.google.com/maps/search/?api=1&query=Maadi+Cairo"
+      target="_blank"
+    >
+      📍 موقع الفرح
+    </a>
+
+    <div class="footer">
+      وجودكم هو أجمل هدية لنا ✨
+    </div>
+
+  </div>
+
+  <script>
+
+    /* إنشاء النجوم */
+    const stars = document.getElementById("stars");
+
+    for (let i = 0; i < 80; i++) {
+
+      const star = document.createElement("div");
+
+      star.className = "star";
+
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+
+      star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+      stars.appendChild(star);
+    }
+
+
+    /* إنشاء ورود متساقطة */
+    const flowers = ["🌸", "🌹", "✨"];
+
+    for (let i = 0; i < 18; i++) {
+
+      const flower = document.createElement("div");
+
+      flower.className = "flower";
+
+      flower.innerHTML =
+        flowers[Math.floor(Math.random() * flowers.length)];
+
+      flower.style.left =
+        Math.random() * 100 + "%";
+
+      flower.style.animationDuration =
+        (6 + Math.random() * 8) + "s";
+
+      flower.style.animationDelay =
+        Math.random() * 8 + "s";
+
+      document.body.appendChild(flower);
+    }
+
+
+    /* العد التنازلي */
+
+    const weddingDate =
+      new Date("September 4, 2026 20:00:00").getTime();
+
+    function updateCountdown() {
+
+      const now = new Date().getTime();
+
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+
+        document.querySelector(".countdown").innerHTML =
+          "<div style='color:#f5d27b;font-size:20px;'>🎉 اليوم فرحنا! 🎉</div>";
+
+        return;
+      }
+
+      const days =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+      const hours =
+        Math.floor(
+          (distance % (1000 * 60 * 60 * 24))
+          / (1000 * 60 * 60)
+        );
+
+      const minutes =
+        Math.floor(
+          (distance % (1000 * 60 * 60))
+          / (1000 * 60)
+        );
+
+      const seconds =
+        Math.floor(
+          (distance % (1000 * 60))
+          / 1000
+        );
+
+      document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+
+      document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+      document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+      document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+  </script>
+
+</body>
+</html>
